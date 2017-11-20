@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Kalkulator
 {
-    private Stack<float> stack;
+    
     public partial class Form1 : Form
     {
         public Form1()
@@ -197,32 +197,57 @@ namespace Kalkulator
 
         public void wynik()
         {
+            // Get the stack.
+            // ... See above definition of this method.
+            Stack<int> stack = GetStack();
+
+            // Pop the top element.
+            int pop = stack.Pop();
+
+            // Write to the console.
+            Console.WriteLine("--- Element popped from top of Stack ---");
+            Console.WriteLine(pop);
+
+            // Now look at the top element.
+            int peek = stack.Peek();
+            Console.WriteLine("--- Element now at the top ---");
+            Console.WriteLine(peek);
+
             switch (count)
             {
                 case 1:
-                    ans = stack; ////num + float.Parse(textBox1.Text);
+                    Stack<float> ans = new Stack<float> 
+                    //ans = stack.Pop; ////num + float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
                 case 2:
-                    ans = stack // num - float.Parse(textBox1.Text);
+                    //ans = stack // num - float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
                 case 3:
-                    ans = stack // num * float.Parse(textBox1.Text);
+                    //ans = stack // num * float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
                 case 4:
-                    ans = stack // num / float.Parse(textBox1.Text);
+                    //ans = stack // num / float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
                 default:
                     break;
             }
+private Stack<int> GetStack()
+        {
+            throw new NotImplementedException();
         }
+
+        internal class stack
+    {
+    }
+}
         
 
     }
