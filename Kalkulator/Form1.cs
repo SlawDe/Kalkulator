@@ -18,8 +18,8 @@ namespace Kalkulator
         {
             InitializeComponent();
         }
-        float num, ans;
-        int count;
+        float operand, ans;
+        string count; //byl int
         public void disable() //Disable method
         {
             textBox1.Text = "";
@@ -146,40 +146,42 @@ namespace Kalkulator
         {
             disable();
         }
+
+
         //DZIAŁANIA
         private void button5_Click(object sender, EventArgs e) //suma
         {
-            stack = float.Parse(textBox1.Text);
+            operand = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
-            count = 1;
+            count = "1";
             label1.Text = stack.ToString() + "+";
         }
 
         private void button9_Click(object sender, EventArgs e) //roznica 
         {
-            stack = float.Parse(textBox1.Text);
+            operand = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
-            count = 2;
+            count = "2";
             label1.Text = stack.ToString() + "-";
         }
 
         private void button13_Click(object sender, EventArgs e) // mnozenie
         {
-            stack = float.Parse(textBox1.Text);
+            operand = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
-            count = 3;
+            count = "3";
             label1.Text = stack.ToString() + "*";
         }
 
         private void button18_Click(object sender, EventArgs e) // dzielenie // num na stack
         {
-            stack = float.Parse(textBox1.Text);
+            operand = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
-            count = 4;
+            count = "4";
             label1.Text = stack.ToString() + "/";
         }
 
@@ -193,26 +195,52 @@ namespace Kalkulator
         {
             textBox1.Text = "";
         }
-        
 
+
+        Stack stack = new Stack();
         public void wynik()
         {
-            // Get the stack.
-            // ... See above definition of this method.
-            Stack<int> stack = GetStack();
+             //preparation for storage of numbers or operand
+            int prevNum, currNum = 0;
+            string operand;
+            prevNum = int.Parse(stack.Pop().ToString());
+            operand = stack.Pop().ToString();
 
-            // Pop the top element.
-            int pop = stack.Pop();
+            //answer.Text = "prev: " + prevNum + "op:" + operand;
+            //currNum = int.Parse(stack.Pop().ToString());
 
-            // Write to the console.
-            Console.WriteLine("--- Element popped from top of Stack ---");
-            Console.WriteLine(pop);
+            do
+            {
+                operand = stack.Pop().ToString();
+                if (count == "+")
+                {
+                    currNum = int.Parse(stack.Pop().ToString());
+                    prevNum = currNum + prevNum;
+                    textBox1.Text = prevNum.ToString();
+                }
 
-            // Now look at the top element.
-            int peek = stack.Peek();
-            Console.WriteLine("--- Element now at the top ---");
-            Console.WriteLine(peek);
+                if (count == "-")
+                {
+                    currNum = int.Parse(stack.Pop().ToString());
+                    prevNum = currNum - prevNum;
+                    textBox1.Text = prevNum.ToString();
+                }
 
+                if (count == "/")
+                {
+                    currNum = int.Parse(stack.Pop().ToString());
+                    prevNum = currNum / prevNum;
+                    textBox1.Text = prevNum.ToString();
+                }
+
+                if (count == "*")
+                {
+                    currNum = int.Parse(stack.Pop().ToString());
+                    prevNum = currNum * prevNum;
+                    textBox1.Text = prevNum.ToString();
+                }
+            } while (operand != " ");
+            /*
             switch (count)
             {
                 case 1:
@@ -238,15 +266,8 @@ namespace Kalkulator
 
                 default:
                     break;
-            }
-private Stack<int> GetStack()
-        {
-            throw new NotImplementedException();
-        }
+            }*/
 
-        internal class stack
-    {
-    }
 }
         
 
