@@ -200,7 +200,7 @@ namespace Kalkulator
             switch (count)
             {
                 case 1:
-                    ans = stack; //num + float.Parse(textBox1.Text);
+                    ans = stack; ////num + float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
