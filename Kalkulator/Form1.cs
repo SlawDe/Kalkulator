@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Kalkulator
 {
+    private Stack<float> stack;
     public partial class Form1 : Form
     {
         public Form1()
@@ -147,38 +149,38 @@ namespace Kalkulator
         //DZIAŁANIA
         private void button5_Click(object sender, EventArgs e) //suma
         {
-            num = float.Parse(textBox1.Text);
+            stack = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
             count = 1;
-            label1.Text = num.ToString() + "+";
+            label1.Text = stack.ToString() + "+";
         }
 
         private void button9_Click(object sender, EventArgs e) //roznica 
         {
-            num = float.Parse(textBox1.Text);
+            stack = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
             count = 2;
-            label1.Text = num.ToString() + "-";
+            label1.Text = stack.ToString() + "-";
         }
 
         private void button13_Click(object sender, EventArgs e) // mnozenie
         {
-            num = float.Parse(textBox1.Text);
+            stack = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
             count = 3;
-            label1.Text = num.ToString() + "*";
+            label1.Text = stack.ToString() + "*";
         }
 
-        private void button18_Click(object sender, EventArgs e) // dzielenie
+        private void button18_Click(object sender, EventArgs e) // dzielenie // num na stack
         {
-            num = float.Parse(textBox1.Text);
+            stack = float.Parse(textBox1.Text);
             textBox1.Clear();
             textBox1.Focus();
             count = 4;
-            label1.Text = num.ToString() + "/";
+            label1.Text = stack.ToString() + "/";
         }
 
         private void button16_Click(object sender, EventArgs e) //znak równa się
@@ -191,28 +193,29 @@ namespace Kalkulator
         {
             textBox1.Text = "";
         }
+        
 
         public void wynik()
         {
             switch (count)
             {
                 case 1:
-                    ans = num + num + float.Parse(textBox1.Text);
+                    ans = stack; //num + float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
                 case 2:
-                    ans = num - float.Parse(textBox1.Text);
+                    ans = stack // num - float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
                 case 3:
-                    ans = num * float.Parse(textBox1.Text);
+                    ans = stack // num * float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
                 case 4:
-                    ans = num / float.Parse(textBox1.Text);
+                    ans = stack // num / float.Parse(textBox1.Text);
                     textBox1.Text = ans.ToString();
                     break;
 
@@ -220,6 +223,7 @@ namespace Kalkulator
                     break;
             }
         }
+        
 
     }
 }
