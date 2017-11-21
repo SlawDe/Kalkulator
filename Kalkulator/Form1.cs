@@ -16,8 +16,21 @@ namespace Kalkulator
         {
             InitializeComponent();
         }
+
+        public Form1(Stack<float> liczba, Stack<float> liczba2, Stack<float> operacja)
+        {
+            this.liczba = liczba;
+            this.liczba2 = liczba2;
+            this.operacja = operacja;
+        }
+
         float num, ans;
         int count;
+        private Stack<float> liczba;
+        private Stack<float> liczba2;
+        private Stack<float> operacja;
+
+
         public void disable() //Disable method - blokada kalkulatora
         {
             textBox1.Text = "";
@@ -86,7 +99,7 @@ namespace Kalkulator
             textBox1.Text = textBox1.Text + ".";
             textBox1.ForeColor = Color.Red;
         }
-        private void button19_Click(object sender, EventArgs e) // przyciski 0 - 9 Przycisk0
+        private void button19_Click(object sender, EventArgs e) // przyciski 0 - 9 Przycisk 0
         {
             textBox1.Text = textBox1.Text + 0;
             textBox1.ForeColor = Color.Red;
@@ -148,11 +161,11 @@ namespace Kalkulator
         //DZIAŁANIA
         private void button5_Click(object sender, EventArgs e) //suma
         {
-            num = float.Parse(textBox1.Text);
-            textBox1.Clear();
-            textBox1.Focus();
-            count = 1;
-            label1.Text = num.ToString() + "+";
+            num = float.Parse(textBox1.Text);   //przypisanie cyfry + działania do zmiennej num
+            textBox1.Clear();                   //czyszczenie ekraniu dla kolejnej cyfry
+            textBox1.Focus();                   //przygotowanie ekranu dla kolejnej cyfry
+            count = 1;                          //licznik na potrzeby switcha
+            label1.Text = num.ToString() + "+"; //wypisanie liczby oraz + na ekranie
         }
 
         private void button9_Click(object sender, EventArgs e) //roznica 

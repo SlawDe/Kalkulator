@@ -17,3 +17,4 @@ C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csproj.Generate
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csproj.CoreCompileInputs.cache
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.exe
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.pdb
+C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csprojResolveAssemblyReference.cache
