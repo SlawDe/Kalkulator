@@ -11,7 +11,6 @@ C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\Kalkulator\obj\Debug\Kalkulator.pdb
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\bin\Debug\Kalkulator.exe.config
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\bin\Debug\Kalkulator.exe
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\bin\Debug\Kalkulator.pdb
-C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csprojResolveAssemblyReference.cache
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.Form1.resources
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.Properties.Resources.resources
 C:\Users\Slaw\Desktop\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csproj.GenerateResource.Cache
