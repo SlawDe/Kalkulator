@@ -18,6 +18,7 @@ namespace Kalkulator
             InitializeComponent();
         }
         Stack<float> liczba = new Stack<float>();
+        Stack<DateTime> data = new Stack<DateTime>();
 
 
         public void disable() //Disable method - blokada kalkulatora
@@ -217,11 +218,28 @@ namespace Kalkulator
         }
         private void button16_Click(object sender, EventArgs e) // Data +
         {
+            var data1 = data.Pop();
+            var data2 = data.Pop();
 
+            //DateTime Subtraction(data2,data1);
+            var wynik1 = data2 + data1;
+            textBox1.Text = wynik.ToString();   
         }
 
         private void button26_Click(object sender, EventArgs e) // Data -
         {
+            DateTime data1 = data.Pop();
+            DateTime data2 = data.Pop();
+            //DateTime Subtraction(data2,data1);
+            System.TimeSpan wynik1 = data2-data1;
+            System.TimeSpan wynik = data2.Subtract(data1);
+            textBox1.Text = wynik.ToString();
+        }
+
+        private void button27_Click(object sender, EventArgs e) // Data ENTER
+        {
+            data.Push(DateTime.Parse(textBox1.Text));
+            label1.Text = data.Peek().ToString() + " ";//Wyswietlenie ostatniej liczby na stosie
         }
     }
 }

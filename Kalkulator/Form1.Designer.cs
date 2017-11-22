@@ -58,6 +58,7 @@
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -230,9 +231,9 @@
             // 
             this.button16.Location = new System.Drawing.Point(312, 365);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(69, 62);
+            this.button16.Size = new System.Drawing.Size(30, 62);
             this.button16.TabIndex = 17;
-            this.button16.Text = "D+";
+            this.button16.Text = "D +";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -290,7 +291,7 @@
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(69, 62);
             this.button21.TabIndex = 23;
-            this.button21.Text = "enter";
+            this.button21.Text = "ENTER";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
@@ -336,19 +337,30 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(312, 433);
+            this.button26.Location = new System.Drawing.Point(348, 365);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(69, 62);
+            this.button26.Size = new System.Drawing.Size(33, 62);
             this.button26.TabIndex = 28;
-            this.button26.Text = "D-";
+            this.button26.Text = "D -";
             this.button26.UseVisualStyleBackColor = true;
             this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(312, 433);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(69, 62);
+            this.button27.TabIndex = 29;
+            this.button27.Text = "DATA ENTER";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 505);
+            this.Controls.Add(this.button27);
             this.Controls.Add(this.button26);
             this.Controls.Add(this.button25);
             this.Controls.Add(this.button24);
@@ -416,6 +428,7 @@
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
     }
 }
 
