@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,19 +17,7 @@ namespace Kalkulator
         {
             InitializeComponent();
         }
-
-        public Form1(Stack<float> liczba, Stack<float> liczba2, Stack<float> operacja)
-        {
-            this.liczba = liczba;
-            this.liczba2 = liczba2;
-            this.operacja = operacja;
-        }
-
-        float num, ans;
-        int count;
-        private Stack<float> liczba;
-        private Stack<float> liczba2;
-        private Stack<float> operacja;
+        Stack<float> liczba = new Stack<float>();
 
 
         public void disable() //Disable method - blokada kalkulatora
@@ -84,22 +73,14 @@ namespace Kalkulator
         {
 
         }
-        private void button3_Click(object sender, EventArgs e)// Przycisk <--
-        {
-            int lenght = textBox1.TextLength - 1;
-            string text = textBox1.Text;
-            textBox1.Clear();
-            for (int i = 0;i <lenght; i++)
-            {
-                textBox1.Text = textBox1.Text + text[i];
-            }
-        }
+
+        //-----------------------------CYFRY------------------------------//
         private void button20_Click(object sender, EventArgs e) //przecinek
         {
             textBox1.Text = textBox1.Text + ".";
             textBox1.ForeColor = Color.Red;
         }
-        private void button19_Click(object sender, EventArgs e) // przyciski 0 - 9 Przycisk 0
+        private void button19_Click(object sender, EventArgs e) // Przycisk 0
         {
             textBox1.Text = textBox1.Text + 0;
             textBox1.ForeColor = Color.Red;
@@ -149,6 +130,8 @@ namespace Kalkulator
             textBox1.Text = textBox1.Text + 9;
             textBox1.ForeColor = Color.Red;
         }
+
+        //-----------------------------FUNKCJE------------------------------//
         private void button1_Click(object sender, EventArgs e) // Przycisk ON
         {
             enable();
@@ -157,127 +140,88 @@ namespace Kalkulator
         {
             disable();
         }
-
-        //DZIAŁANIA
-        private void button5_Click(object sender, EventArgs e) //suma
+        private void button3_Click(object sender, EventArgs e)// Przycisk <--
         {
-            num = float.Parse(textBox1.Text);   //przypisanie cyfry + działania do zmiennej num
-            textBox1.Clear();                   //czyszczenie ekraniu dla kolejnej cyfry
-            textBox1.Focus();                   //przygotowanie ekranu dla kolejnej cyfry
-            count = 1;                          //licznik na potrzeby switcha
-            label1.Text = num.ToString() + "+"; //wypisanie liczby oraz + na ekranie
-        }
-
-        private void button9_Click(object sender, EventArgs e) //roznica 
-        {
-            num = float.Parse(textBox1.Text);
+            int lenght = textBox1.TextLength - 1;
+            string text = textBox1.Text;
             textBox1.Clear();
-            textBox1.Focus();
-            count = 2;
-            label1.Text = num.ToString() + "-";
+            for (int i = 0; i < lenght; i++)
+            {
+                textBox1.Text = textBox1.Text + text[i];
+            }
         }
-
-        private void button13_Click(object sender, EventArgs e) // mnozenie
-        {
-            num = float.Parse(textBox1.Text);
-            textBox1.Clear();
-            textBox1.Focus();
-            count = 3;
-            label1.Text = num.ToString() + "*";
-        }
-
-        private void button18_Click(object sender, EventArgs e) // dzielenie
-        {
-            num = float.Parse(textBox1.Text);
-            textBox1.Clear();
-            textBox1.Focus();
-            count = 4;
-            label1.Text = num.ToString() + "/";
-        }
-
-        private void button16_Click(object sender, EventArgs e) //znak równa się
-        {
-            wynik();
-            label1.Text = "";
-        }
-
         private void button4_Click(object sender, EventArgs e) // Clear
         {
             textBox1.Text = "";
         }
-
-        public void wynik()
+        private void button21_Click(object sender, EventArgs e) //Enter
         {
-            switch (count)
-            {
-                case 1:
-                    ans = num + float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-
-                case 2:
-                    ans = num - float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-
-                case 3:
-                    ans = num * float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-
-                case 4:
-                    ans = num / float.Parse(textBox1.Text);
-                    textBox1.Text = ans.ToString();
-                    break;
-
-                default:
-                    break;
-            }
+            liczba.Push(float.Parse(textBox1.Text));    // wrzucanie liczby na stos
+            textBox1.Clear();                           //czyszczenie ekraniu dla kolejnej cyfry
+            textBox1.Focus();                           //przygotowanie ekranu dla kolejnej cyfry
+            label1.Text = liczba.Peek().ToString() + " ";//Wyswietlenie ostatniej liczby na stosie
+        }
+        private void button25_Click(object sender, EventArgs e) // DROP - usuniecie ostatniej cyfry ze stosu
+        {
+            liczba.Pop();
+            label1.Text = " ";
+            label1.Text = liczba.Peek().ToString();
         }
 
+        //-----------------------------DZIAŁANIA----------------------------//
+        private void button5_Click(object sender, EventArgs e) // suma
+        {
+            float liczba1 = liczba.Pop();
+            float wynik = liczba.Pop() + liczba1;
+            textBox1.Text = wynik.ToString();
+            //liczba.Push(float.Parse(textBox1.Text));   //przypisanie cyfry gdo zmiennej num
+            //textBox1.Clear();                   //czyszczenie ekraniu dla kolejnej cyfry
+            //textBox1.Focus();                   //przygotowanie ekranu dla kolejnej cyfry
+            //label1.Text = num.ToString() + "+"; //wypisanie liczby oraz + na ekranie
+            //label1.Text = liczba.Peek().ToString();// wypisanie liczby , nie kasujac stosu
+        }
+        private void button9_Click(object sender, EventArgs e) // roznica 
+        {
+            float liczba1 = liczba.Pop();
+            float wynik = liczba.Pop() - liczba1;
+            textBox1.Text = wynik.ToString();
+        }
+        private void button13_Click(object sender, EventArgs e) // mnozenie
+        {
+            float liczba1 = liczba.Pop();
+            float wynik = liczba.Pop() * liczba1;
+            textBox1.Text = wynik.ToString();
+        }
+        private void button18_Click(object sender, EventArgs e) // dzielenie
+        {
+            float liczba1 = liczba.Pop();
+            float wynik = liczba.Pop() / liczba1;
+            textBox1.Text = wynik.ToString();
+        }
+        private void button22_Click(object sender, EventArgs e) //  1/x
+        {
+            float wynik = 1 / liczba.Pop();
+            textBox1.Text = wynik.ToString();
+        }
+        private void button23_Click(object sender, EventArgs e) // pierwiastek SQRT
+        {
+            //double liczba1 = liczba.Pop();
+            double wynik = Math.Sqrt(liczba.Pop());//, liczba1);
+            textBox1.Text = wynik.ToString();
+        }
+        private void button24_Click(object sender, EventArgs e) // x do potegi y
+        {
+            double liczba1 = liczba.Pop();
+            double wynik = Math.Pow(liczba.Pop(), liczba1);
+            textBox1.Text = wynik.ToString();
+        }
+        private void button16_Click(object sender, EventArgs e) // Data +
+        {
+
+        }
+
+        private void button26_Click(object sender, EventArgs e) // Data -
+        {
+        }
     }
 }
-
-
-/*
-            //preparation for storage of numbers or operand
-            int prevNum, currNum = 0;
-            string operand;
-            prevNum = int.Parse(stack.Pop().ToString());
-            operand = stack.Pop().ToString();
-
-            //answer.Text = "prev: " + prevNum + "op:" + operand;
-            //currNum = int.Parse(stack.Pop().ToString());
-
-            do
-            {
-                operand = stack.Pop().ToString();
-                if (count == "+")
-                {
-                    currNum = int.Parse(stack.Pop().ToString());
-                    prevNum = currNum + prevNum;
-                    textBox1.Text = prevNum.ToString();
-                }
-
-                if (count == "-")
-                {
-                    currNum = int.Parse(stack.Pop().ToString());
-                    prevNum = currNum - prevNum;
-                    textBox1.Text = prevNum.ToString();
-                }
-
-                if (count == "/")
-                {
-                    currNum = int.Parse(stack.Pop().ToString());
-                    prevNum = currNum / prevNum;
-                    textBox1.Text = prevNum.ToString();
-                }
-
-                if (count == "*")
-                {
-                    currNum = int.Parse(stack.Pop().ToString());
-                    prevNum = currNum * prevNum;
-                    textBox1.Text = prevNum.ToString();
-                }
-            } while (operand != " ");
-            */
