@@ -76,9 +76,14 @@ namespace Kalkulator
         }
 
         //-----------------------------CYFRY------------------------------//
-        private void button20_Click(object sender, EventArgs e) //przecinek
+        private void button20_Click(object sender, EventArgs e) //Przycisk . 
         {
             textBox1.Text = textBox1.Text + ".";
+            textBox1.ForeColor = Color.Red;
+        } 
+        private void button30_Click(object sender, EventArgs e) // Przycisk :
+        {
+            textBox1.Text = textBox1.Text + ":";
             textBox1.ForeColor = Color.Red;
         }
         private void button19_Click(object sender, EventArgs e) // Przycisk 0
@@ -220,26 +225,48 @@ namespace Kalkulator
         {
             var data1 = data.Pop();
             var data2 = data.Pop();
+            TimeSpan timeOfDay = data1.TimeOfDay;
 
-            //DateTime Subtraction(data2,data1);
-            var wynik1 = data2 + data1;
-            textBox1.Text = wynik.ToString();   
+            //TimeSpan timeOfDay2 = data2.TimeOfDay;
+            //DateTime data3 = data1.Add(timeOfDay);
+
+            var wynik = data2 + timeOfDay;
+            textBox1.Text = wynik.ToString();
         }
 
         private void button26_Click(object sender, EventArgs e) // Data -
         {
             DateTime data1 = data.Pop();
             DateTime data2 = data.Pop();
-            //DateTime Subtraction(data2,data1);
-            System.TimeSpan wynik1 = data2-data1;
-            System.TimeSpan wynik = data2.Subtract(data1);
-            textBox1.Text = wynik.ToString();
+            TimeSpan wynik = data2.Subtract(data1);
+            textBox1.Text = wynik.ToString();            
         }
-
         private void button27_Click(object sender, EventArgs e) // Data ENTER
         {
             data.Push(DateTime.Parse(textBox1.Text));
+            textBox1.Clear();
+            textBox1.Focus();                           //przygotowanie ekranu dla kolejnej cyfry
             label1.Text = data.Peek().ToString() + " ";//Wyswietlenie ostatniej liczby na stosie
         }
+        private void button28_Click(object sender, EventArgs e) // H+
+        {
+            var data1 = data.Pop();
+            var data2 = data.Pop();
+            TimeSpan timeOfDay1 = data1.TimeOfDay;
+            TimeSpan timeOfDay2 = data2.TimeOfDay;
+            var wynik = timeOfDay1 + timeOfDay2;
+            textBox1.Text = wynik.ToString();
+        }
+        private void button29_Click(object sender, EventArgs e) // H-
+        {
+            var data1 = data.Pop();
+            var data2 = data.Pop();
+            TimeSpan timeOfDay1 = data1.TimeOfDay;
+            TimeSpan timeOfDay2 = data2.TimeOfDay;
+            var wynik = timeOfDay2 - timeOfDay1;
+            textBox1.Text = wynik.ToString();
+        }
+
+        
     }
 }
